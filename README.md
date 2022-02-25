@@ -1,6 +1,11 @@
 # 322-inventory
-A retail inventory management system for CSCI 322 Software Engineering
+A retail inventory management system for CSCI 322 Software Engineering.
+Created in Java with IntelliJ.
 
-This is an initial commit!
-
-
+To run:
+1. Open IntelliJ
+2. File>New>Project from Version control
+3. ` https://github.com/turnerburchard/322-inventory.git`
+4. Select a local location to store
+5. Create the project
+6. Run `~/inventory/Client.java`
