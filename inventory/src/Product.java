@@ -1,3 +1,5 @@
+import java.util.UUID;
+
 public class Product {
     String name;
     double price;
@@ -13,20 +15,16 @@ public class Product {
     public Product(String name, double price){
         this.name = name;
         this.price = price;
-        this.description = "";
-        this.id = "000000";
+        this.description = "Default Description";
+        this.id = UUID.randomUUID().toString();
     }
 
     public void addDesc(String description){
         this.description = description;
     }
 
-    public void addID(String id){
-        this.id = id;
-    }
-
     public String toString() {
-        return String.format("%s: $%.2f. %s", name, price, description);
+        return String.format("%s: $%.2f. \n%s\nID=%s\n\n", name, price, description,id);
     }
 
 
