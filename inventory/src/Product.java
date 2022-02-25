@@ -4,6 +4,12 @@ public class Product {
     String description;
     String id;
 
+    /**
+     * Product Class to store products with name, price, description, and ID
+     * @param name Name of the product. Below 32 characters.
+     * @param price Price of the product. Rounded to 2 decimals.
+     */
+
     public Product(String name, double price){
         this.name = name;
         this.price = price;
