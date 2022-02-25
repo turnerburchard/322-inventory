@@ -1,5 +1,4 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList; // import the ArrayList class
+import java.util.ArrayList;
 
 public class Inventory {
     ArrayList<Product> products = new ArrayList<>();
@@ -9,6 +8,12 @@ public class Inventory {
     }
 
     public String toString(){
-        return products.toString();
+        String out = "";
+
+        for (Product p:products){
+            out = String.join(out, p.toString(), "\n");
+        }
+
+        return out;
     }
 }
