@@ -4,7 +4,8 @@ public class Product {
     String name;
     double price;
     String description;
-    String id;
+    int id;
+    static int counter = 0;
 
     /**
      * Product Class to store products with name, price, description, and ID
@@ -16,7 +17,7 @@ public class Product {
         this.name = name;
         this.price = price;
         this.description = "Default Description";
-        this.id = UUID.randomUUID().toString();
+        this.id = counter++;
     }
 
     public void setDesc(String description){

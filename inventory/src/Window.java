@@ -1,9 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.GridLayout;
+
 
 public class Window extends JFrame{
     private static JButton newProduct = new JButton("Create Product");
+    private static JButton removeProduct = new JButton("Remove Product");
 
     private Inventory inventory = new Inventory();
 
@@ -16,6 +19,7 @@ public class Window extends JFrame{
 
     public void createFrame(){
         JFrame frame = new JFrame("Inventory");
+        frame.setLayout(new GridLayout(4,4));
         frame.setSize(800, 800);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,6 +37,7 @@ public class Window extends JFrame{
 
 
         frame.add(newProduct, BorderLayout.NORTH);
+        frame.add(removeProduct, BorderLayout.NORTH);
         frame.add(scroll);
 
 
@@ -58,7 +63,7 @@ public class Window extends JFrame{
                         products.setText(inventory.toString());
                     }
                     catch (Exception error){
-                        System.out.println("Invalid input");
+                        throwError("Invalid Input");
                     }
 
 
@@ -67,6 +72,36 @@ public class Window extends JFrame{
             }
         });
 
+        Window.removeProduct.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JTextField idField = new JTextField();
+                String message = "Please enter ID of product to be removed: ";
+
+                int result = JOptionPane.showOptionDialog(frame, new Object[] {message, idField}, "Remove a Product",
+                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+
+                if (result == JOptionPane.OK_OPTION){
+                    try{
+                        inventory.removeProduct(Integer.parseInt(idField.getText()));
+                        products.setText(inventory.toString());
+                    }
+
+                    catch (Exception error){
+                        throwError("Invalid Input");
+                    }
+
+                }
+            }
+
+
+        });
+
         frame.setVisible(true);
+    }
+
+
+    private void throwError(String error){
+        System.out.println(error);
     }
 }
