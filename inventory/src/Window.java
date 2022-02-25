@@ -3,10 +3,9 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Window extends JFrame{
-    public static JButton newProduct = new JButton("Create Product");
+    private static JButton newProduct = new JButton("Create Product");
 
     private Inventory inventory = new Inventory();
-
 
     public Window(){
         //while (true){ //keep querying for new products until window is closed
@@ -43,12 +42,18 @@ public class Window extends JFrame{
 
                 JTextField nameField = new JTextField();
                 JTextField priceField = new JTextField();
-                String message = "Please enter product name and price.";
-                int result = JOptionPane.showOptionDialog(frame, new Object[] {message, nameField, priceField},"Login", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+                JTextField descField = new JTextField();
+                String message = "Please enter product name, price, and description.";
+                String message2 = "Name:";
+                String message3 = "Price:";
+                String message4 = "Description:";
+                int result = JOptionPane.showOptionDialog(frame, new Object[] {message, message2, nameField, message3, priceField, message4, descField},
+                        "Create a New Product", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
 
                 if (result == JOptionPane.OK_OPTION){
                     try{
                         Product product = new Product(nameField.getText(), Double.parseDouble(priceField.getText()));
+                        product.setDesc(descField.getText());
                         inventory.addProduct(product);
                         products.setText(inventory.toString());
                     }
@@ -64,6 +69,4 @@ public class Window extends JFrame{
 
         frame.setVisible(true);
     }
-
-
 }

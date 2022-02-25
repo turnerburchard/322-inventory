@@ -9,11 +9,9 @@ public class Inventory {
 
     public String toString(){
         String out = "";
-
         for (Product p:products){
             out = String.join(out, p.toString(), "\n");
         }
-
         return out;
     }
 }

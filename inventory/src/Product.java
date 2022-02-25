@@ -19,7 +19,7 @@ public class Product {
         this.id = UUID.randomUUID().toString();
     }
 
-    public void addDesc(String description){
+    public void setDesc(String description){
         this.description = description;
     }
 
