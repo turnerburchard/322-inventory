@@ -2,10 +2,9 @@ import java.util.UUID;
 
 public class Product {
     String name;
-    double price;
+    private double price;
     String description;
-    int id;
-    static int counter = 0;
+    String id;
 
     /**
      * Product Class to store products with name, price, description, and ID
@@ -17,16 +16,17 @@ public class Product {
         this.name = name;
         this.price = price;
         this.description = "Default Description";
-        this.id = counter++;
+        this.id = UUID.randomUUID().toString();
     }
 
     public void setDesc(String description){
         this.description = description;
     }
 
+    public String getID(){return id;}
+
     public String toString() {
         return String.format("%s: $%.2f. \n%s\nID=%s\n\n", name, price, description,id);
     }
-
 
 }

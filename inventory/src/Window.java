@@ -19,7 +19,7 @@ public class Window extends JFrame{
 
     public void createFrame(){
         JFrame frame = new JFrame("Inventory");
-        frame.setLayout(new GridLayout(4,4));
+        frame.setLayout(new GridLayout(3,3));
         frame.setSize(800, 800);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -83,7 +83,7 @@ public class Window extends JFrame{
 
                 if (result == JOptionPane.OK_OPTION){
                     try{
-                        inventory.removeProduct(Integer.parseInt(idField.getText()));
+                        inventory.removeProduct((idField.getText()));
                         products.setText(inventory.toString());
                     }
 

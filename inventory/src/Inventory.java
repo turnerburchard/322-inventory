@@ -7,8 +7,8 @@ public class Inventory {
         products.add(p);
     }
 
-    public void removeProduct(int id){
-        products.remove(id);
+    public void removeProduct(String id){
+        products.removeIf(e -> e.getID().equals(id));
     }
 
     public String toString(){
