@@ -2,7 +2,7 @@ import java.util.UUID;
 
 public class Product {
     String name;
-    double price;
+    private double price;
     String description;
     String id;
 
@@ -23,9 +23,10 @@ public class Product {
         this.description = description;
     }
 
+    public String getID(){return id;}
+
     public String toString() {
         return String.format("%s: $%.2f. \n%s\nID=%s\n\n", name, price, description,id);
     }
-
 
 }

@@ -7,6 +7,10 @@ public class Inventory {
         products.add(p);
     }
 
+    public void removeProduct(String id){
+        products.removeIf(e -> e.getID().equals(id));
+    }
+
     public String toString(){
         String out = "";
         for (Product p:products){
