@@ -1,4 +1,8 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.GridLayout;
@@ -14,11 +18,11 @@ public class Window extends JFrame{
         //while (true){ //keep querying for new products until window is closed
             createFrame();
         //}
-
     }
 
     public void createFrame(){
         JFrame frame = new JFrame("Inventory");
+        frame.setBackground(Color.DARK_GRAY);
         frame.setLayout(new GridLayout(3,3));
         frame.setSize(800, 800);
         frame.setResizable(false);
@@ -35,6 +39,18 @@ public class Window extends JFrame{
                 scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
                 scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
+        //Button styling
+        Border line = new LineBorder(Color.BLACK);
+        Border margin = new EmptyBorder(5, 15, 5, 15);
+        Border compound = new CompoundBorder(line, margin);
+        newProduct.setForeground(Color.green);
+        newProduct.setBackground(Color.gray);
+
+        newProduct.setBorder(compound);
+
+        removeProduct.setForeground(Color.red);
+        removeProduct.setBackground(Color.gray);
+        removeProduct.setBorder(compound);
 
         frame.add(newProduct, BorderLayout.NORTH);
         frame.add(removeProduct, BorderLayout.NORTH);
