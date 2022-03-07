@@ -72,19 +72,27 @@ public class Window extends JFrame{
                         "Create a New Product", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
 
                 if (result == JOptionPane.OK_OPTION){
+                    String name = nameField.getText();
+                    String desc = descField.getText();
                     try{
-                        Product product = new Product(nameField.getText(), Double.parseDouble(priceField.getText()));
-                        product.setDesc(descField.getText());
-                        inventory.addProduct(product);
-                        products.setText(inventory.toString());
+                        Product product = new Product(name, Double.parseDouble(priceField.getText()));
+                        if (name.length() < 3 || desc.length() < 3 || name.length() > 50 || desc.length() > 50){
+                            throwError("Name and description must be 3-50 characters in length.");
+                        }
+                        else{
+                            product.setDesc(desc);
+                            inventory.addProduct(product);
+                            products.setText(inventory.toString());
+
+                        }
+                    }
+                    catch (NumberFormatException error){
+                        throwError("Price must be a valid number");
                     }
                     catch (Exception error){
                         throwError("Invalid Input");
                     }
-
-
                 }
-
             }
         });
 
@@ -118,6 +126,6 @@ public class Window extends JFrame{
 
 
     private void throwError(String error){
-        System.out.println(error);
-    }
+        JOptionPane.showMessageDialog(null, error,"Error", JOptionPane.ERROR_MESSAGE);
+    };
 }
