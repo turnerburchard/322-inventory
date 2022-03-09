@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Inventory {
-    ArrayList<Product> products = new ArrayList<>();
+    static ArrayList<Product> products = new ArrayList<>();
 
     public void addProduct(Product p){
         products.add(p);
