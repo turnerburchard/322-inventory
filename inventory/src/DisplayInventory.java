@@ -6,7 +6,7 @@ public class DisplayInventory {
         ArrayList<Product> inventory = inv.inventory;
 
         //Header
-        System.out.println("\nNAME                              PRICE DESCRIPTION                    STATUS       QUANTITY  ID");
+        System.out.println("\nNAME                              PRICE  DESCRIPTION                    STATUS       QUANTITY  ID");
 
         //runs through the inventory and prints out product information
         for(Product p: inventory) {
