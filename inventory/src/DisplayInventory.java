@@ -37,7 +37,7 @@ public class DisplayInventory {
             }
             tempStock = Integer.toString(p.getStock());
             //Print out inventory list.
-            System.out.printf("%-30s %8s %-30s %-12s %8s  %s\n", tempName, p.getPrice(), tempDesc, tempActive, tempStock, p.getId());
+            System.out.printf("%-30s %8s  %-30s %-12s %8s  %s\n", tempName, p.getPrice(), tempDesc, tempActive, tempStock, p.getId());
         }
     }
 }
