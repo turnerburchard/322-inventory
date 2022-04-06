@@ -8,4 +8,7 @@ To run:
 3. ` https://github.com/turnerburchard/322-inventory.git`
 4. Select a local location to store
 5. Create the project
-6. Run `~/inventory/Client.java`
+
+`inventory` folder - holds final inventory management system.
+
+`prototype` folder - holds initial prototype. Run prototype/Client.java to test.

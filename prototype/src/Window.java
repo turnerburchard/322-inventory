@@ -79,6 +79,9 @@ public class Window extends JFrame{
                         if (name.length() < 3 || desc.length() < 3 || name.length() > 50 || desc.length() > 50){
                             throwError("Name and description must be 3-50 characters in length.");
                         }
+                        else if(inventory.contains(name)) { //  Checks if name has already been added to inventory.
+                            throwError("This item name is already in the system.");
+                        }
                         else{
                             product.setDesc(desc);
                             inventory.addProduct(product);
@@ -127,5 +130,5 @@ public class Window extends JFrame{
 
     private void throwError(String error){
         JOptionPane.showMessageDialog(null, error,"Error", JOptionPane.ERROR_MESSAGE);
-    };
+    }
 }

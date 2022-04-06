@@ -23,6 +23,10 @@ public class Product {
         this.description = description;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public String getID(){return id;}
 
     public String toString() {
