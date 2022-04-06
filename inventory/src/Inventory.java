@@ -20,6 +20,8 @@ public class Inventory {
             p.setName(line[0]);
             p.setPrice(Double.parseDouble(line[1]));
             p.setDescription(line[2]);
+            p.setStock(Integer.parseInt(line[3]));
+            p.setActive(Boolean.parseBoolean(line[4]));
             inventory.add(p);
         }
         scan.close();

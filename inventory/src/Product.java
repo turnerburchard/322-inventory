@@ -4,12 +4,17 @@ public class Product {
     String name;
     double price;
     String description;
+    Boolean active;
+    int stock;
 
     //generic class
     Product() {
         name = "No Name Set";
         price = 0.00;
         description = "No Description Set";
+        active = false;
+        stock = 0;
+
 
     }
     //getters and setters for the important information.
@@ -34,4 +39,17 @@ public class Product {
         return description;
     }
 
+    public void setStock(int p) {
+        stock = p;
+    }
+    public int getStock() {
+        return stock;
+    }
+
+    public void setActive(boolean p) {
+        active = p;
+    }
+    public boolean getActive() {
+        return active;
+    }
 }

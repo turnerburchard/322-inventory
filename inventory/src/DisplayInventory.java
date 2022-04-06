@@ -9,6 +9,8 @@ public class DisplayInventory {
         for(Product p: inventory) {
             String tempName;
             String tempDesc;
+            String tempActive;
+            String tempStock;
             //If name/desc is longer than 30 chars, will cut them off at 27 and add 3 dots.
             if(p.getName().length() > 30) {
                 tempName = p.getName().substring(0, 26);
@@ -24,9 +26,15 @@ public class DisplayInventory {
             else {
                 tempDesc = p.getDescription();
             }
-
+            if(p.getActive()) {
+                tempActive = "Active";
+            }
+            else {
+                tempActive = "Not Active";
+            }
+            tempStock = Integer.toString(p.getStock());
             //Print out inventory list.
-            System.out.printf("%-30s %-8s %s\n", tempName, p.getPrice(), tempDesc);
+            System.out.printf("%-30s %8s %-30s %-12s %8s\n", tempName, p.getPrice(), tempDesc, tempActive, tempStock);
         }
     }
 }
