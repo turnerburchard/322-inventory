@@ -1,10 +1,32 @@
 import java.util.ArrayList;
-
+//Brady 4/5
 public class DisplayInventory {
-    public void display(Inventory inv) {
+    public static void display(Inventory inv) {
+        //create an arraylist of our current inventory of products
         ArrayList<Product> inventory = inv.inventory;
+
+        //runs through the inventory and prints out product information
         for(Product p: inventory) {
-            System.out.printf("%20s %8s %s", p.getName(), p.getPrice(), p.getDescription());
+            String tempName;
+            String tempDesc;
+            //If name/desc is longer than 30 chars, will cut them off at 27 and add 3 dots.
+            if(p.getName().length() > 30) {
+                tempName = p.getName().substring(0, 26);
+                tempName = tempName + "...";
+            }
+            else {
+                tempName = p.getName();
+            }
+            if(p.getDescription().length() > 30) {
+                tempDesc = p.getDescription().substring(0, 26);
+                tempDesc = tempDesc + "...";
+            }
+            else {
+                tempDesc = p.getDescription();
+            }
+
+            //Print out inventory list.
+            System.out.printf("%-30s %-8s %s\n", tempName, p.getPrice(), tempDesc);
         }
     }
 }
