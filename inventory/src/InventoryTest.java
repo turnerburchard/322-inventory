@@ -9,7 +9,7 @@ public class InventoryTest {
         p.setDescription("This Stir Fry evokes memories of the salty breeze off the ocean, and a warm summer day");
         System.out.println(p.getName() + " \nPrice: " + p.getPrice() + " \nDescription: " + p.getDescription());
 
-        File data = new File("C:\\Users\\brady\\IdeaProjects\\322-inventory\\inventory\\src\\Data(1).csv");
+        File data = new File("data.csv");
         Inventory inventory = new Inventory(data);
         inventory.addProduct(p);
         DisplayInventory.display(inventory);
