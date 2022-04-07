@@ -29,4 +29,19 @@ public class Inventory {
     public void addProduct(Product p) {
         inventory.add(p);
     }
+
+    public void importProducts(File file) throws FileNotFoundException {
+        Scanner scan = new Scanner(file);
+        while(scan.hasNextLine()) {
+            Product p = new Product();
+            String[] line = scan.nextLine().split(",");
+            p.setName(line[0]);
+            p.setPrice(Double.parseDouble(line[1]));
+            p.setDescription(line[2]);
+            p.setStock(Integer.parseInt(line[3]));
+            p.setActive(Boolean.parseBoolean(line[4]));
+            inventory.add(p);
+        }
+        scan.close();
+    }
 }
