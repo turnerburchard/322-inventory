@@ -5,7 +5,7 @@ public class DisplayInventory {
         //create an arraylist of our current inventory of products
         ArrayList<Product> inventory = inv.inventory;
 
-        System.out.printf("%-30s %-30s %8s %8s %-12s\n", "Product Name", "Product Description", "Price", "Stock", "Active Product?");
+        System.out.printf("%-30s %-30s %8s %8s %-15s %3s\n", "Product Name", "Product Description", "Price", "Stock", "Active Product?" , "ID");
 
         //runs through the inventory and prints out product information
         for(Product p: inventory) {
@@ -37,7 +37,7 @@ public class DisplayInventory {
             tempStock = Integer.toString(p.getStock());
             //Print out inventory list.
 
-            System.out.printf("%-30s %-30s %8s %8s %-12s  %s\n", tempName, tempDesc, p.getPrice(), tempStock, tempActive, p.getId());
+            System.out.printf("%-30s %-30s %8s %8s %-15s  %s\n", tempName, tempDesc, p.getPrice(), tempStock, tempActive, p.getId());
         }
     }
 }
