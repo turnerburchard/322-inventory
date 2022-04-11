@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 //Brady Ash 4/4
-public class Inventory {
+public class Inventory implements Observer{
     ArrayList<Product> inventory;
 
     Inventory(){
@@ -28,5 +28,10 @@ public class Inventory {
     }
     public void addProduct(Product p) {
         inventory.add(p);
+    }
+
+    @Override
+    public void update(Inventory inventory) {
+
     }
 }

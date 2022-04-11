@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 //Brady 4/5
-public class DisplayInventory {
+public class DisplayInventory{
     public static void display(Inventory inv) {
         //create an arraylist of our current inventory of products
         ArrayList<Product> inventory = inv.inventory;

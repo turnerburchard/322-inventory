@@ -6,7 +6,7 @@ public class Product {
     private String description;
     private Boolean active;
     private int stock;
-    private String id;
+    private final String id;
 
     //generic class
     Product() {
