@@ -4,7 +4,7 @@ public class Product {
     private String name;
     private double price;
     private String description;
-    private Boolean active;
+    private boolean active;
     private int stock;
     private String id;
 
