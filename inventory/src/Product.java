@@ -1,11 +1,12 @@
 //Brady Ash 4/4
 //Class that creates an object to hold a product's important information.
 public class Product {
-    String name;
-    double price;
-    String description;
-    Boolean active;
-    int stock;
+    private String name;
+    private double price;
+    private String description;
+    private Boolean active;
+    private int stock;
+    private String id;
 
     //generic class
     Product() {
@@ -14,7 +15,7 @@ public class Product {
         description = "No Description Set";
         active = false;
         stock = 0;
-
+        id = Double.toString(Math.random()).substring(4,9);
 
     }
     //getters and setters for the important information.
@@ -52,4 +53,6 @@ public class Product {
     public boolean getActive() {
         return active;
     }
+
+    public String getId(){ return id; }
 }
