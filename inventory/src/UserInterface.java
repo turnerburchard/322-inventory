@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -21,6 +22,27 @@ public class UserInterface {
                 p.setActive(Boolean.parseBoolean(line[4]));
                 inventory.addProduct(p);
             }
+
+            if(option == 2) {  //ES: Option to search for an item.
+                Scanner input = new Scanner(System.in);
+                System.out.println("Enter the first few character of a product's name to get a list of matching products.");
+                String userInput = input.nextLine();
+                userInput = userInput.toLowerCase();
+                ArrayList<Product> matchesFound = inventory.searchInventory(userInput);  //  Search inventory and compare each product to the user's input
+
+                //  Loop through and print each product that was found from the searchInventory method
+                System.out.println("Size:" +matchesFound.size());
+                for(int i = 0; i < matchesFound.size(); i++) {
+                    System.out.println(i + ":" + matchesFound.get(i).getName() + ", $" + matchesFound.get(i).getPrice() + ", #" + matchesFound.get(i).getId());
+                }
+
+
+            }
+
+            if(option == 3) {  // Option to modify a Product.
+                System.out.println("Modify a product.");
+            }
+
             DisplayInventory.display(inventory);
             System.out.println("Menu:\nEnter 1 to add a product\nEnter 2 to search for a product\nEnter 3 to modify an object\nEnter 0 to exit");
             option = inp.nextInt();
