@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 //Brady Ash 4/4
 public class Inventory {
-    ArrayList<Product> inventory;
+    private ArrayList<Product> inventory;
 
     Inventory(){
         inventory = new ArrayList<>();
