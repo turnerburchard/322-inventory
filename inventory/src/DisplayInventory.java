@@ -1,9 +1,10 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 //Brady 4/5
 public class DisplayInventory {
     public static void display(Inventory inv) {
         //create an arraylist of our current inventory of products
-        ArrayList<Product> inventory = inv.inventory;
+        ArrayList<Product> inventory = inv.getInventory();
 
         System.out.printf("%-30s %-30s %8s %8s %-15s %3s\n", "Product Name", "Product Description", "Price", "Stock", "Active Product?" , "ID");
 

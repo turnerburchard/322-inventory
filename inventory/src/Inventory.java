@@ -92,4 +92,7 @@ public class Inventory {
         }
         scan.close();
     }
+    public ArrayList getInventory() {
+        return inventory;
+    }
 }

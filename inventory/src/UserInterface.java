@@ -3,11 +3,11 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class UserInterface {
-    public static void menu() {
-        System.out.println("Menu:\nEnter 1 to add a product\nEnter 2 to search for a product\nEnter 3 to modify an object\nEnter 0 to exit");
+    public static void menu(Inventory inv) {
+        System.out.println("Menu:\nEnter 1 to add a product\nEnter 2 to search for a product\nEnter 3 to modify an object\nEnter 4 to display the inventory\nEnter 0 to exit");
         Scanner inp = new Scanner(System.in);
         Scanner str = new Scanner(System.in);
-        Inventory inventory = new Inventory();
+        Inventory inventory = inv;
         int option = inp.nextInt();
         while(option != 0) {
             if(option == 1) {
@@ -60,9 +60,12 @@ public class UserInterface {
                     productMatch.setActive(Boolean.parseBoolean(line[4]));
                 }
             }
+            if(option == 4) {
+                DisplayInventory.display(inventory);
+            }
 
-            DisplayInventory.display(inventory);
-            System.out.println("Menu:\nEnter 1 to add a product\nEnter 2 to search for a product\nEnter 3 to modify an object\nEnter 0 to exit");
+            //DisplayInventory.display(inventory);
+            System.out.println("\nMenu:\nEnter 1 to add a product\nEnter 2 to search for a product\nEnter 3 to modify an object\nEnter 4 to display the inventory\nEnter 0 to exit");
             option = inp.nextInt();
         }
         System.out.println("Operation complete. Closing Menu.");
