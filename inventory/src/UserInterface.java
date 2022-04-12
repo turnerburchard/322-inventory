@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -24,9 +25,8 @@ public class UserInterface {
             }
 
             if(option == 2) {  //ES: Option to search for an item.
-                Scanner input = new Scanner(System.in);
                 System.out.println("Enter the first few character of a product's name to get a list of matching products.");
-                String userInput = input.nextLine();
+                String userInput = str.nextLine();
                 userInput = userInput.toLowerCase();
                 ArrayList<Product> matchesFound = inventory.searchInventory(userInput);  //  Search inventory and compare each product to the user's input
 
@@ -39,8 +39,26 @@ public class UserInterface {
 
             }
 
-            if(option == 3) {  // Option to modify a Product.
-                System.out.println("Modify a product.");
+            if(option == 3) {  //ES: Option to modify a Product.
+                Product modifiedProduct = new Product();
+                System.out.println("Enter the item name you would like to modify");
+                String userInput = str.nextLine().toLowerCase();
+                Product productMatch = inventory.searchForProduct(userInput);
+
+                if (productMatch == null) {  // If the product wasn't found in the search
+                }
+                //  If product is not null then we get the new info for the product and change it.
+                else {
+                    System.out.println("Enter the new info for " + productMatch.getName() + " separated by a comma\n" +
+                            "Name, Price, Description, Stock,and Active Status(True or False)");
+                    String[] line;
+                    line = str.nextLine().split(",");
+                    productMatch.setName(line[0]);
+                    productMatch.setPrice(Double.parseDouble(line[1]));
+                    productMatch.setDescription(line[2]);
+                    productMatch.setStock(Integer.parseInt(line[3]));
+                    productMatch.setActive(Boolean.parseBoolean(line[4]));
+                }
             }
 
             DisplayInventory.display(inventory);
