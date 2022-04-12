@@ -30,6 +30,25 @@ public class Inventory {
         inventory.add(p);
     }
 
+    /***
+     * Ezra Skoog
+     * @param userInput  - The string the user passes to search for an item
+     * @return           - Returns an array list with all the products the matched the search.
+     * ************************************
+     * Search through the inventory and check if any product matches the user's input.
+     */
+    public ArrayList<Product> searchInventory(String userInput) {
+        ArrayList<Product> matchesFound = new ArrayList<>();
+        for(Product eachProduct : inventory) {  //  Check each item in the inventory to see if it contains matching letters with user input
+            String tempProduct = eachProduct.getName();
+            tempProduct = tempProduct.toLowerCase();
+            if(tempProduct.contains(userInput)) {
+                matchesFound.add(eachProduct);
+            }
+        }
+        return matchesFound;
+    }
+
     public void importProducts(File file) throws FileNotFoundException {
         Scanner scan = new Scanner(file);
         while(scan.hasNextLine()) {
