@@ -3,6 +3,13 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class UserInterface {
+
+    Modules currentModule = null; // when null, main menu display/options?
+
+    public void changeModule() {
+
+    }
+
     public static void menu(Inventory inv) {
         System.out.println("Menu:\nEnter 1 to add a product\nEnter 2 to search for a product\nEnter 3 to modify an object\nEnter 4 to display the inventory\nEnter 0 to exit");
         Scanner inp = new Scanner(System.in);
