@@ -3,6 +3,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class InventoryTest {
+
+    
     public static void main(String[] args) throws FileNotFoundException {
         Product p = new Product();
         p.setName("Turner's Fantastic Stir Fry and Cherry Pie");
