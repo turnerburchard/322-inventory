@@ -17,7 +17,8 @@ public class InventoryTest {
         inventory.addProduct(p);
         inventory.importProducts(data);
         DisplayInventory.display(inventory);
-          UserInterface.menu();
+
+        UserInterface.menu(inventory);
 
     }
 }
