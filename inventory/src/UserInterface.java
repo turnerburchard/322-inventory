@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class UserInterface { // class drives the system
     // passes 'control' of system function to system modules that encapsulate respective system functions
 
-    public Modules currentModule = null; // when null, main menu display/options?
+    public ModuleSpecific currentModule = null; // var for interacting with interface methods of module classes
 
     public UserInterface() { // constructors calls menuMain() to take over as driver of the class
         // needs to load a .csv upon creation, essentially loading inventory on start
@@ -14,7 +14,11 @@ public class UserInterface { // class drives the system
         menuMain();
     }
 
-    public void changeModule(Modules nextModule) { // used by menuMain() to change system function modules depending on user input
+    public void runCurrentModule() { // for running the module, used by menuMain()
+        currentModule.moduleDriver(); // calls current module's driver to start that respective function
+    }
+
+    public void changeModule(ModuleSpecific nextModule) { // used by menuMain() to change system function modules depending on user input
         // can also be called and used by system module if modules would like to redirect to other modules
 
         currentModule = nextModule; // changes system function
@@ -43,16 +47,22 @@ public class UserInterface { // class drives the system
         } else if (inputString.equals("1")) { // add a product
             changeModule(new AddProduct());
 
+            runCurrentModule();
+
         } else if (inputString.equals("2")) { // search by id
             changeModule(new Search());
+
+            runCurrentModule();
 
         } else if (inputString.equals("3")) { // edit a product
             changeModule(new EditProduct());
 
+            runCurrentModule();
+
         } else {
             System.out.println("==== Input Not Understood -> Try Again ===="); // user input error-catcher
-            menuMain();
 
+            menuMain(); // loops menuMain()
         }
     }
 }
