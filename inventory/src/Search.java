@@ -1,8 +1,5 @@
 public class Search extends Modules implements ModuleSpecific{
 
-    public void driver() {
-
-    }
 
     @Override
     public void moduleDriver() {
@@ -16,6 +13,11 @@ public class Search extends Modules implements ModuleSpecific{
 
     @Override
     public void userInput() {
+
+    }
+
+    @Override
+    public void returnToMain() {
 
     }
 }

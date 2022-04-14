@@ -37,7 +37,7 @@ public class Inventory { // class that manages ArrayList of Products (i.e. the i
         return inventoryInstance;
     }
 
-    public boolean addProductSec(Product prod) { // for protecting data-accessing methods
+    private boolean addProductSec(Product prod) { // for protecting data-accessing methods
         inventory.add(prod);
         return true;
     }
@@ -104,7 +104,7 @@ public class Inventory { // class that manages ArrayList of Products (i.e. the i
         }
         //  Check if the product was found
         //  If not then return null and display the names of all product in the inventory.
-        if(wasProductFound == false) {
+        if(!wasProductFound) {
             int counter = 0;
             System.out.println("Product was not found. Please select one of the available product.");
             for (Product eachProduct : inventory) {
