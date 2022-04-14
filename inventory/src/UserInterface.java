@@ -1,5 +1,6 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class UserInterface { // class drives the system
@@ -51,6 +52,7 @@ public class UserInterface { // class drives the system
         } else {
             System.out.println("==== Input Not Understood -> Try Again ===="); // user input error-catcher
             menuMain();
+
         }
     }
 }
