@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 //Brady Ash 4/4
-public class Inventory {
-    private ArrayList<Product> inventory;
+public class Inventory { // class that manages ArrayList of Products (i.e. the inventory)
 
-    Inventory(){
+    private ArrayList<Product> inventory; // the aforementioned inventory
+
+    private Inventory() { // called by getInstance(), Singleton pattern
         inventory = new ArrayList<>();
     }
 
     //for csv input
-    Inventory(File file) throws FileNotFoundException {
+    Inventory(File file) throws FileNotFoundException { // prolly want to remove/move to a module?
         inventory = new ArrayList<>();
         Scanner scan = new Scanner(file);
         while(scan.hasNextLine()) {
@@ -27,8 +28,40 @@ public class Inventory {
         }
         scan.close();
     }
-    public void addProduct(Product p) {
-        inventory.add(p);
+
+    static void getInstance() { // for Singleton pattern, calls private constructor
+
+    }
+
+    public boolean addProductSec(Product prod) { // for protecting data-accessing methods
+
+        return true;
+    }
+
+    private boolean addProduct(Product prod) { // adds given product to inventory ArrayList
+        inventory.add(prod);
+
+        return true;
+    }
+
+    public Product searchForSec(String id) { // for protecting data-accessing methods
+
+        return new Product(); // have 'null' Product constructor for passing 'not found' message to modules?
+    }
+
+    private Product searchFor(String id) { // searches for Product, given id, returns the Product
+
+        return new Product(); // have 'null' Product constructor for passing 'not found' message to modules?
+    }
+
+    public boolean modProductSec(String id) {  // for protecting data-accessing methods
+
+        return true;
+    }
+
+    private boolean modProduct(String id) { // modifies Product, given id
+
+        return true;
     }
 
     /***
@@ -38,7 +71,7 @@ public class Inventory {
      * ************************************
      * Search through the inventory and check if any product matches the user's input.
      */
-    public ArrayList<Product> searchInventory(String userInput) {
+    public ArrayList<Product> searchInventory(String userInput) { // should adapt/use for generic inventory iterator method
         ArrayList<Product> matchesFound = new ArrayList<>();
         for(Product eachProduct : inventory) {  //  Check each item in the inventory to see if it contains matching letters with user input
             String tempProduct = eachProduct.getName();
@@ -55,7 +88,7 @@ public class Inventory {
      * @param userInput    - A string the user will pass in to search for an item to modify
      * @return Product     - Returns the product if found and NULL if the product is not found
      */
-    public Product searchForProduct(String userInput) {
+    public Product searchForProduct(String userInput) { //
         Product productMatch = null;
         boolean wasProductFound = false;
 
