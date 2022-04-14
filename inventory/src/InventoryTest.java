@@ -13,8 +13,10 @@ public class InventoryTest {
         //System.out.println(p.getName() + " \nPrice: " + p.getPrice() + " \nDescription: " + p.getDescription());
 
         File data = new File("data.csv");
-        Inventory inventory = new Inventory();
+
+        Inventory inventory = Inventory.getInstance();
         inventory.addProduct(p);
+
         inventory.importProducts(data);
         DisplayInventory.display(inventory);
 

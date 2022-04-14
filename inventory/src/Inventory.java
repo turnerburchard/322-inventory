@@ -6,7 +6,8 @@ import java.util.Scanner;
 //Brady Ash 4/4
 public class Inventory { // class that manages ArrayList of Products (i.e. the inventory)
 
-    private ArrayList<Product> inventory; // the aforementioned inventory
+    private static Inventory inventoryInstance;
+    private static ArrayList<Product> inventory; // the aforementioned inventory
 
     private Inventory() { // called by getInstance(), Singleton pattern
         inventory = new ArrayList<>();
@@ -29,18 +30,20 @@ public class Inventory { // class that manages ArrayList of Products (i.e. the i
         scan.close();
     }
 
-    static void getInstance() { // for Singleton pattern, calls private constructor
-
+    public static Inventory getInstance() { // for Singleton pattern, calls private constructor
+        if (inventoryInstance == null) {
+            inventoryInstance = new Inventory();
+        }
+        return inventoryInstance;
     }
 
     public boolean addProductSec(Product prod) { // for protecting data-accessing methods
-
+        inventory.add(prod);
         return true;
     }
 
-    private boolean addProduct(Product prod) { // adds given product to inventory ArrayList
-        inventory.add(prod);
-
+    public boolean addProduct(Product prod) { // adds given product to inventory ArrayList
+        addProductSec(prod);
         return true;
     }
 
@@ -110,6 +113,8 @@ public class Inventory { // class that manages ArrayList of Products (i.e. the i
         }
         return productMatch;
     }
+
+
 
     public void importProducts(File file) throws FileNotFoundException {
         Scanner scan = new Scanner(file);
