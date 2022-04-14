@@ -1,6 +1,8 @@
 public class EditProduct extends Modules implements ModuleSpecific{
+
+
     @Override
-    public void driver() {
+    public void moduleDriver() {
 
     }
 
@@ -11,6 +13,11 @@ public class EditProduct extends Modules implements ModuleSpecific{
 
     @Override
     public void userInput() {
+
+    }
+
+    @Override
+    public void returnToMain() {
 
     }
 }

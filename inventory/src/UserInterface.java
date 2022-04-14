@@ -1,5 +1,6 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -10,6 +11,24 @@ public class UserInterface {
 
     }
 
+    public static void main(String[] args) throws FileNotFoundException {
+        Product p = new Product();
+        p.setName("Turner's Fantastic Stir Fry and Cherry Pie");
+        p.setPrice(19.99);
+        p.setDescription("This Stir Fry and Cherry Pie evokes memories of the salty breeze off the ocean, and a warm summer day");
+        //System.out.println(p.getName() + " \nPrice: " + p.getPrice() + " \nDescription: " + p.getDescription());
+
+        File data = new File("data.csv");
+
+        Inventory inventory = Inventory.getInstance();
+        inventory.addProduct(p);
+
+        inventory.importProducts(data);
+        DisplayInventory.display(inventory);
+
+        UserInterface.menu(inventory);
+    }
+
     public static void menu(Inventory inv) {
         System.out.println("Menu:\nEnter 1 to add a product\nEnter 2 to search for a product\nEnter 3 to modify an object\nEnter 4 to display the inventory\nEnter 0 to exit");
         Scanner inp = new Scanner(System.in);
@@ -18,17 +37,8 @@ public class UserInterface {
         int option = inp.nextInt();
         while(option != 0) {
             if(option == 1) {
-                Product p = new Product();
-                System.out.println("Enter Product Information separated by a comma:\n" +
-                        "Name, Price, Description, Stock,and Active Status(True or False)");
-                String[] line;
-                line = str.nextLine().split(",");
-                p.setName(line[0]);
-                p.setPrice(Double.parseDouble(line[1]));
-                p.setDescription(line[2]);
-                p.setStock(Integer.parseInt(line[3]));
-                p.setActive(Boolean.parseBoolean(line[4]));
-                inventory.addProduct(p);
+                AddProduct addProduct = new AddProduct();
+                addProduct.moduleDriver();
             }
 
             if(option == 2) {  //ES: Option to search for an item.
@@ -53,7 +63,9 @@ public class UserInterface {
                 Product productMatch = inventory.searchForProduct(userInput);
 
                 if (productMatch == null) {  // If the product wasn't found in the search
+                    System.out.println("Product was not found in the search");
                 }
+
                 //  If product is not null then we get the new info for the product and change it.
                 else {
                     System.out.println("Enter the new info for " + productMatch.getName() + " separated by a comma\n" +

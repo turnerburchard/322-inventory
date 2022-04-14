@@ -1,6 +1,6 @@
 public abstract class Modules {
 
-    public void returnToMain() {
+    public abstract void returnToMain();
 
-    }
+
 }
