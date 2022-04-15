@@ -2,20 +2,17 @@ import java.util.Scanner;
 
 public class AddProduct extends Modules {
 
-    @Override
     public void moduleDriver() {
         userOptions();
         userInput();
         returnToMain();
     }
 
-    @Override
     public void userOptions() {
         System.out.println("Enter Product Information separated by a comma:\n" +
                 "Name, Price, Description, Stock,and Active Status(True or False)");
     }
 
-    @Override
     public void userInput() {
 
         String[] productInfo;
@@ -34,9 +31,8 @@ public class AddProduct extends Modules {
 
     }
 
-    @Override
     public void returnToMain() {
-        UserInterface userInterface = new UserInterface();
-        userInterface.menuMain();
+        
     }
+
 }
