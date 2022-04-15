@@ -37,34 +37,47 @@ public class Inventory { // class that manages ArrayList of Products (i.e. the i
         return inventoryInstance;
     }
 
-    private boolean addProductSec(Product prod) { // for protecting data-accessing methods
-        inventory.add(prod);
+    public boolean addProductSec(Product prod) { // for protecting data-accessing methods
+        addProduct(prod);
         return true;
     }
 
-    public boolean addProduct(Product prod) { // adds given product to inventory ArrayList
-        addProductSec(prod);
+    private boolean addProduct(Product prod) { // adds given product to inventory ArrayList
+        for(Product p : inventory){ // searches for matching ids
+            if(p.getId() == prod.getId()){ // if ids match then don't add product
+                return false;
+            }
+        }
+        inventory.add(prod); // adds product to inventory ArrayList
         return true;
     }
 
-    public Product searchForSec(String id) { // for protecting data-accessing methods
-
-        return new Product(); // have 'null' Product constructor for passing 'not found' message to modules?
-    }
-
-    private Product searchFor(String id) { // searches for Product, given id, returns the Product
-
-        return new Product(); // have 'null' Product constructor for passing 'not found' message to modules?
-    }
-
-    public boolean modProductSec(String id) {  // for protecting data-accessing methods
-
+    public boolean modProductSec(Product prod) {  // for protecting data-accessing methods
+        modProduct(prod);
         return true;
     }
 
-    private boolean modProduct(String id) { // modifies Product, given id
+    private boolean modProduct(Product prod) { // modifies Product
+        for(Product p : inventory) {
+            if (p.getId() == prod.getId()) { // search for id
+                p.setName(prod.getName()); // modify name
+                p.setPrice(prod.getPrice()); // modify price
+                p.setDescription(prod.getDescription()); // modify description
+                p.setStock(prod.getStock()); // modify stock
+                p.setActive(prod.getActive()); // modify active
+                return true;
+            }
+        }
 
-        return true;
+        return false;
+    }
+
+    public ArrayList returnInventorySec(){
+        return returnInventory();
+    }
+
+    private ArrayList returnInventory(){
+        return inventory;
     }
 
     /***
