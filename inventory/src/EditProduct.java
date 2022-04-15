@@ -15,7 +15,7 @@ public class EditProduct extends Modules {
 
     public void userInput() {
         Scanner name = new Scanner(System.in);
-        String userInput = name.nextLine().toLowerCase();
+        String userInput = name.nextLine();
         ArrayList<Product> inv;
         String matchFound = "null";
         String newId = "none";
@@ -24,16 +24,16 @@ public class EditProduct extends Modules {
         inv = inventory.returnInventorySec();
 
         for(Product p : inv){ // search for product with same name
-            if(p.getName().toLowerCase().equals(userInput)){
+            if(p.getName().toLowerCase().equals(userInput.toLowerCase())){
                 newId = p.getId();
                 matchFound = "Found";
             }
         }
         if(matchFound == "null"){ // no product with input name
-            System.out.println("No product with the name " + name);
+            System.out.println("No product with the name " + userInput);
         }
         else{ // modify the product
-            System.out.println("Enter the new info for " + name + " separated by a comma\n" +
+            System.out.println("Enter the new info for " + userInput + " separated by a comma\n" +
                                "Name, Price, Description, Stock, and Active Status(True or False)");
 
             String[] productInfo;
