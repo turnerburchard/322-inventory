@@ -8,6 +8,10 @@ public class UserInterface { // class drives the system
 
     public Modules currentModule = null; // var for interacting with interface methods of module classes
 
+    public static void main(String[] args) {
+        new UserInterface();
+    }
+
     public UserInterface() { // constructors calls menuMain() to take over as driver of the class
         // needs to load a .csv upon creation, essentially loading inventory on start
 
