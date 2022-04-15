@@ -1,19 +1,51 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface { // class drives the system
     // passes 'control' of system function to system modules that encapsulate respective system functions
 
+    private Inventory inventory = Inventory.getInstance(); // creates/grabs inventory instance when class is init.
+
     public Modules currentModule = null; // var for interacting with interface methods of module classes
 
-    public static void main(String[] args) {
-        new UserInterface();
-    }
+    public UserInterface() throws IOException { // loads .csv upon creation, essentially loading persistent data on start
+        // calls menuMain() to act as class driver
+        File file = new File("invData.csv");
 
-    public UserInterface() { // constructors calls menuMain() to take over as driver of the class
-        // needs to load a .csv upon creation, essentially loading inventory on start
+        FileReader reader = new FileReader(file); // creates files readers
+        BufferedReader buffReader = new BufferedReader(reader);
+
+        String line = ""; // needed for reading in csv
+        String [] temp; // needed for reading in csv
+
+        int productCounter = -1;
+
+        while((line = buffReader.readLine()) != null) {
+            temp = line.split(",");
+
+            if (productCounter >= 0) {
+                Product newProd = new Product(temp[0]);
+
+                newProd.setName(temp[1]);
+                newProd.setPrice(Double.parseDouble(temp[2]));
+                newProd.setDescription(temp[3]);
+                if (temp[4] == "t") {
+                    newProd.setActive(true);
+                }
+                else {
+                    newProd.setActive(false);
+                }
+
+                newProd.setStock(Integer.parseInt(temp[5]));
+            }
+            else {
+            }
+
+            productCounter++;
+        }
+
+        System.out.println("====| " + productCounter + " products loaded into inventory |====");
 
         menuMain();
     }
@@ -29,7 +61,7 @@ public class UserInterface { // class drives the system
     }
 
     public void menuMain() { // acts as a central hub for the system interface, directs to system functions
-        System.out.println("|==== Menu ====|" + // displays main menu options to user
+        System.out.println("====| Menu |====" + // displays main menu options to user
                 "\n1 -> Add a Product" +
                 "\n2 -> Search by ID" +
                 "\n3 -> Edit a Product" +
@@ -38,7 +70,7 @@ public class UserInterface { // class drives the system
 
         Scanner str = new Scanner(System.in); // creates scanner object
 
-        System.out.println("Enter Menu Number: "); // visual flag for user input
+        System.out.println(">>>>| Enter Menu #: "); // visual flag for user input
 
         String inputString = str.nextLine(); // takes whatever user enters, so as not to create error
         // input errors caught at end of if/else
@@ -75,6 +107,10 @@ public class UserInterface { // class drives the system
 
             menuMain(); // loops menuMain()
         }
+    }
+
+    public static void main(String[] args) throws IOException {
+        new UserInterface();
     }
 }
 

@@ -1,6 +1,8 @@
+import java.io.IOException;
+
 public abstract class Modules {
 
-    public void returnToMain() {
+    public void returnToMain() throws IOException {
         UserInterface mainInterface = new UserInterface();
 
         mainInterface.menuMain();
