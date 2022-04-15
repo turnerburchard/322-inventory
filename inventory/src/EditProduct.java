@@ -52,4 +52,8 @@ public class EditProduct extends Modules {
         }
 
     }
+
+    public void returnToMain(){
+
+    }
 }
