@@ -30,4 +30,9 @@ public class AddProduct extends Modules {
         inventory.addProduct(p);
 
     }
+
+    public void returnToMain() {
+        
+    }
+
 }
