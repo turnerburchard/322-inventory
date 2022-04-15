@@ -37,7 +37,6 @@ public class AddProduct extends Modules implements ModuleSpecific{
     @Override
     public void returnToMain() {
         UserInterface userInterface = new UserInterface();
-        Inventory inventory = Inventory.getInstance();
-        userInterface.menu(inventory);
+        userInterface.menuMain();
     }
 }
