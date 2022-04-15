@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class UserInterface { // class drives the system
     // passes 'control' of system function to system modules that encapsulate respective system functions
 
-    public ModuleSpecific currentModule = null; // var for interacting with interface methods of module classes
+    public Modules currentModule = null; // var for interacting with interface methods of module classes
 
     public static void main(String[] args) {
         new UserInterface();
@@ -22,7 +22,7 @@ public class UserInterface { // class drives the system
         currentModule.moduleDriver(); // calls current module's driver to start that respective function
     }
 
-    public void changeModule(ModuleSpecific nextModule) { // used by menuMain() to change system function modules depending on user input
+    public void changeModule(Modules nextModule) { // used by menuMain() to change system function modules depending on user input
         // can also be called and used by system module if modules would like to redirect to other modules
 
         currentModule = nextModule; // changes system function

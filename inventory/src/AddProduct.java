@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class AddProduct extends Modules implements ModuleSpecific{
+public class AddProduct extends Modules {
 
     @Override
     public void moduleDriver() {

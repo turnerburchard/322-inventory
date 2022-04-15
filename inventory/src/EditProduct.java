@@ -1,4 +1,4 @@
-public class EditProduct extends Modules implements ModuleSpecific{
+public class EditProduct extends Modules {
 
 
     @Override

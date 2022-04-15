@@ -1,4 +1,4 @@
-public class Search extends Modules implements ModuleSpecific{
+public class Search extends Modules {
 
 
     @Override
