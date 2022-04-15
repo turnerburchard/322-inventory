@@ -54,5 +54,6 @@ public class Product {
         return active;
     }
 
+    public void setId(String i) { id = i; }
     public String getId(){ return id; }
 }
