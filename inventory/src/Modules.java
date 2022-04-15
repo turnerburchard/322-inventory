@@ -1,6 +1,14 @@
 public abstract class Modules {
 
-    public abstract void returnToMain();
+    public void returnToMain() {
+
+    }
+
+    public abstract void moduleDriver();
+
+    public abstract void userOptions();
+
+    public abstract void userInput();
 
 
 }
