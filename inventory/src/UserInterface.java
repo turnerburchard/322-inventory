@@ -8,6 +8,10 @@ public class UserInterface { // class drives the system
 
     public ModuleSpecific currentModule = null; // var for interacting with interface methods of module classes
 
+    public static void main(String[] args) {
+        new UserInterface();
+    }
+
     public UserInterface() { // constructors calls menuMain() to take over as driver of the class
         // needs to load a .csv upon creation, essentially loading inventory on start
 
@@ -29,6 +33,7 @@ public class UserInterface { // class drives the system
                 "\n1 -> Add a Product" +
                 "\n2 -> Search by ID" +
                 "\n3 -> Edit a Product" +
+                "\n4 -> Display Inventory" +
                 "\n0 -> SAVE & EXIT");
 
         Scanner str = new Scanner(System.in); // creates scanner object
@@ -59,7 +64,13 @@ public class UserInterface { // class drives the system
 
             runCurrentModule();
 
-        } else {
+        } else if (inputString.equals("4")) {
+            Inventory inventory = Inventory.getInstance();
+            DisplayInventory inventoryDisplay = new DisplayInventory();
+            inventoryDisplay.display(inventory);
+            menuMain();
+        }
+        else {
             System.out.println("==== Input Not Understood -> Try Again ===="); // user input error-catcher
 
             menuMain(); // loops menuMain()
