@@ -6,7 +6,7 @@ import java.util.Scanner;
 //Brady Ash 4/4
 public class Inventory { // class that manages ArrayList of Products (i.e. the inventory)
 
-    private static Inventory inventoryInstance;
+    private static Inventory inventoryInstance = null;
     private static ArrayList<Product> inventory; // the aforementioned inventory
 
     private Inventory() { // called by getInstance(), Singleton pattern
