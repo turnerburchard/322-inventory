@@ -60,7 +60,7 @@ public class UserInterface { // class drives the system
         currentModule = nextModule; // changes system function
     }
 
-    public void menuMain() { // acts as a central hub for the system interface, directs to system functions
+    public void menuMain() throws IOException { // acts as a central hub for the system interface, directs to system functions
         System.out.println("====| Menu |====" + // displays main menu options to user
                 "\n1 -> Add a Product" +
                 "\n2 -> Search by ID" +
@@ -77,6 +77,22 @@ public class UserInterface { // class drives the system
 
         if (inputString.equals("0")) { // SAVE & EXIT
             System.out.println("====| Saving... |====");
+
+//            File persistData = new File("invData.csv");
+//
+//            if (persistData.delete()) { // deletes old invData.csv
+//            }
+//            else {
+//                System.out.println("====| NO CHANGES SAVED: issues saving data |====");
+//            }
+//
+//            if (persistData.createNewFile()) { // creates new, blank invData.csv
+//            }
+//            else {
+//                System.out.println("====| NO CHANGES SAVED: issues saving data |====");
+//            }
+
+            // need code to write all inv products to invData.csv
 
             System.out.println("====| Closing... |====");
             System.exit(0);
