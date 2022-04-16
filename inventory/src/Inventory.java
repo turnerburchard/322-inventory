@@ -47,7 +47,7 @@ public class Inventory { // class that manages ArrayList of Products (i.e. the i
             productCounter++;
         }
 
-        System.out.println("====| " + productCounter + " products loaded into inventory |====");
+        System.out.println("====| " + productCounter + " products loaded into inventory");
     }
 
     //for csv input
