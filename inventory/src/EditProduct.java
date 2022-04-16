@@ -2,9 +2,12 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class EditProduct extends Modules {
+// Written by:
+// Reviewed by:
 
-    public void moduleDriver() throws IOException {
+public class EditProduct extends Modules { // system function, edits an already existing Product in inventory
+
+    public void moduleDriver() throws IOException { // driver module
         userOptions();
         userInput();
         try {
@@ -14,11 +17,11 @@ public class EditProduct extends Modules {
         }
     }
 
-    public void userOptions() {
+    public void userOptions() { // displays module's main menu
         System.out.println("Enter the name of a product to modify: ");
     }
 
-    public void userInput() throws IOException {
+    public void userInput() throws IOException { // handles module's main menu input
         Scanner name = new Scanner(System.in);
         String userInput = name.nextLine();
         ArrayList<Product> inv;
@@ -43,7 +46,7 @@ public class EditProduct extends Modules {
 
             String[] productInfo;
             Scanner mod = new Scanner(System.in);
-            Product p = new Product();
+            Product p = new Product(newId);
 
             productInfo = mod.nextLine().split(",");
             p.setName(productInfo[0]);
@@ -51,7 +54,6 @@ public class EditProduct extends Modules {
             p.setDescription(productInfo[2]);
             p.setStock(Integer.parseInt(productInfo[3]));
             p.setActive(Boolean.parseBoolean(productInfo[4]));
-            p.setId(newId);
             inventory.modProductSec(p);
 
         }

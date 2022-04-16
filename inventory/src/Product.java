@@ -1,6 +1,11 @@
 import java.util.UUID;
 
-public class Product {
+// Written by:
+// Reviewed by:
+
+public class Product { // data class for holding information concerning a single Product
+    // all products in the inventory must have a unique ID, logically equivalent to a SKU/product #/UPC/serial #
+
     private String name;
     private double price;
     private String description;
@@ -8,8 +13,7 @@ public class Product {
     private int stock;
     private String id;
 
-    //generic class
-    Product() { // for creating a Product with a random ID
+    Product() { // for creating a Product with a random ID, ID cannot be changed after creation
         name = "No Name Set";
         price = 0.00;
         description = "No Description Set";
@@ -17,6 +21,7 @@ public class Product {
         stock = 0;
         this.id = UUID.randomUUID().toString().substring(0,8);
     }
+
     Product(String inputID) { // for creating a Product with a specific ID, ID cannot be changed after creation
         this.id = inputID;
         name = "No Name Set";
@@ -26,7 +31,7 @@ public class Product {
         stock = 0;
     }
 
-    //getters and setters for the important information.
+    //getters and setters for the all data attributes EXCEPT ID
     public void setName(String s) {
         name = s;
     }
@@ -62,6 +67,5 @@ public class Product {
         return active;
     }
 
-    public void setId(String i) { id = i; }
     public String getId(){ return id; }
 }

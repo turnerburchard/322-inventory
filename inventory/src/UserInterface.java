@@ -1,55 +1,28 @@
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class UserInterface { // class drives the system
-    // passes 'control' of system function to system modules that encapsulate respective system functions
+// Written by:
+// Reviewed by:
 
-    private final Inventory inventory = Inventory.getInstance(); // creates/grabs inventory instance when class is init.
+// GENERIC INVENTORY PROGRAM: by unique ID/serial #/SKU/etc.
+// Created by: Brady Ash, Ezra Skoog, Jeremy Heng, Josh Fried, Turner Burchard
+// This system is designed to be a generic inventory management system that stores items as Products
+// ID, name, price, description, whether the Product is active, and stock count are all respectively saved for all Products
+// The system provides function for displaying inventory Products, adding to inventory, and searching inventory
+// The system was built using OCP principles with system functions (called Modules) being open for extension
+
+public class UserInterface { // class drives the system, handles user input, and acts as the main menu for the system
+    // passes 'control' of system function to system modules that encapsulate respective system functions
+    // userInterface can be created multiple times and it will not affect system function, no need to hold to a static or single ref
 
     public Modules currentModule = null; // var for interacting with interface methods of module classes
 
     public UserInterface() throws IOException { // loads .csv upon creation, essentially loading persistent data on start
         // calls menuMain() to act as class driver
-//        File file = new File("invData.csv");
-//
-//        FileReader reader = new FileReader(file); // creates files readers
-//        BufferedReader buffReader = new BufferedReader(reader);
-//
-//        String line = ""; // needed for reading in csv
-//        String [] temp; // needed for reading in csv
-//
-//        int productCounter = -1;
-//
-//        while((line = buffReader.readLine()) != null) {
-//            temp = line.split(",");
-//
-//            if (productCounter >= 0) {
-//                Product newProd = new Product(temp[0]);
-//
-//                newProd.setName(temp[1]);
-//                newProd.setPrice(Double.parseDouble(temp[2]));
-//                newProd.setDescription(temp[3]);
-//                if (temp[4] == "t") {
-//                    newProd.setActive(true);
-//                }
-//                else {
-//                    newProd.setActive(false);
-//                }
-//
-//                newProd.setStock(Integer.parseInt(temp[5]));
-//
-//                inventory.addProductSec(newProd);
-//            }
-//            else {
-//            }
-//
-//            productCounter++;
-//        }
-//
-//        System.out.println("====| " + productCounter + " products loaded into inventory |====");
 
-        menuMain();
+        Inventory.getInstance(); // calls constructor for inventory to load, singleton pattern so no bad effects?
+
+        menuMain(); // displays main menu
     }
 
     public void runCurrentModule() throws IOException { // for running the module, used by menuMain()
@@ -63,7 +36,7 @@ public class UserInterface { // class drives the system
     }
 
     public void menuMain() throws IOException { // acts as a central hub for the system interface, directs to system functions
-        System.out.println("====| Main Menu " + // displays main menu options to user
+        System.out.println("====| Main Menu: " + // displays main menu options to user
                 "\n1 -> Add a Product" +
                 "\n2 -> Search" +
                 "\n3 -> Edit a Product" +
@@ -94,7 +67,7 @@ public class UserInterface { // class drives the system
 //                System.out.println("====| NO CHANGES SAVED: issues saving data |====");
 //            }
 
-            // need code to write all inv products to invData.csv
+            // need code to write all inv products to newly created invData.csv, because old invData.csv was deleted
 
             System.out.println("====| Closing...");
             System.exit(0);
@@ -114,11 +87,11 @@ public class UserInterface { // class drives the system
 
             runCurrentModule();
 
-        } else if (inputString.equals("4")) {
-            Inventory inventory = Inventory.getInstance();
-            DisplayInventory inventoryDisplay = new DisplayInventory();
-            inventoryDisplay.display(inventory);
-            menuMain();
+        } else if (inputString.equals("4")) { // displays all Products in Inventory
+            changeModule(new DisplayInventory());
+
+            runCurrentModule();
+
         }
         else {
             System.out.println("====| Input Not Understood -> Try Again"); // user input error-catcher
@@ -131,72 +104,3 @@ public class UserInterface { // class drives the system
         new UserInterface();
     }
 }
-
-//    public static void menu(Inventory inv) {
-//        System.out.println("Menu:\nEnter 1 to add a product\nEnter 2 to search for a product\nEnter 3 to modify an object\nEnter 4 to display the inventory\nEnter 0 to exit");
-//        Scanner inp = new Scanner(System.in);
-//        Scanner str = new Scanner(System.in);
-//        Inventory inventory = inv;
-//        int option = inp.nextInt();
-//        while(option != 0) {
-//            if(option == 1) {
-//                Product p = new Product();
-//                System.out.println("Enter Product Information separated by a comma:\n" +
-//                        "Name, Price, Description, Stock,and Active Status(True or False)");
-//                String[] line;
-//                line = str.nextLine().split(",");
-//                p.setName(line[0]);
-//                p.setPrice(Double.parseDouble(line[1]));
-//                p.setDescription(line[2]);
-//                p.setStock(Integer.parseInt(line[3]));
-//                p.setActive(Boolean.parseBoolean(line[4]));
-//                inventory.addProduct(p);
-//            }
-//
-//            if(option == 2) {  //ES: Option to search for an item.
-//                System.out.println("Enter the first few character of a product's name to get a list of matching products.");
-//                String userInput = str.nextLine();
-//                userInput = userInput.toLowerCase();
-//                ArrayList<Product> matchesFound = inventory.searchInventory(userInput);  //  Search inventory and compare each product to the user's input
-//
-//                //  Loop through and print each product that was found from the searchInventory method
-//                System.out.println("Size:" +matchesFound.size());
-//                for(int i = 0; i < matchesFound.size(); i++) {
-//                    System.out.println(i + ":" + matchesFound.get(i).getName() + ", $" + matchesFound.get(i).getPrice() + ", #" + matchesFound.get(i).getId());
-//                }
-//
-//
-//            }
-//
-//            if(option == 3) {  //ES: Option to modify a Product.
-//                Product modifiedProduct = new Product();
-//                System.out.println("Enter the item name you would like to modify");
-//                String userInput = str.nextLine().toLowerCase();
-//                Product productMatch = inventory.searchForProduct(userInput);
-//
-//                if (productMatch == null) {  // If the product wasn't found in the search
-//                }
-//                //  If product is not null then we get the new info for the product and change it.
-//                else {
-//                    System.out.println("Enter the new info for " + productMatch.getName() + " separated by a comma\n" +
-//                            "Name, Price, Description, Stock,and Active Status(True or False)");
-//                    String[] line;
-//                    line = str.nextLine().split(",");
-//                    productMatch.setName(line[0]);
-//                    productMatch.setPrice(Double.parseDouble(line[1]));
-//                    productMatch.setDescription(line[2]);
-//                    productMatch.setStock(Integer.parseInt(line[3]));
-//                    productMatch.setActive(Boolean.parseBoolean(line[4]));
-//                }
-//            }
-//            if(option == 4) {
-//                DisplayInventory.display(inventory);
-//            }
-//
-//            //DisplayInventory.display(inventory);
-//            System.out.println("\nMenu:\nEnter 1 to add a product\nEnter 2 to search for a product\nEnter 3 to modify an object\nEnter 4 to display the inventory\nEnter 0 to exit");
-//            option = inp.nextInt();
-//        }
-//        System.out.println("Operation complete. Closing Menu.");
-//    }
-
