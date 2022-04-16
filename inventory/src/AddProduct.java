@@ -27,7 +27,7 @@ public class AddProduct extends Modules {
         p.setActive(Boolean.parseBoolean(productInfo[4]));
 
         Inventory inventory = Inventory.getInstance();
-        inventory.addProduct(p);
+        inventory.addProductSec(p);
 
     }
 
