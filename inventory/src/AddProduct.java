@@ -28,6 +28,7 @@ public class AddProduct extends Modules { // system function, adds a Product to 
 
     }
 
+
     public void userInput() throws IOException { // handles module's main menu input
         Scanner n = new Scanner(System.in);
         Scanner p = new Scanner(System.in);
@@ -36,6 +37,8 @@ public class AddProduct extends Modules { // system function, adds a Product to 
         Scanner a = new Scanner(System.in);
         Scanner i = new Scanner(System.in);
 
+        System.out.println(">>>> Enter ID: "); // take id from user
+        String id = i.nextLine();
 
         System.out.println(">>>> Enter Name: ");
         String name = n.nextLine(); // take name from user
@@ -46,7 +49,7 @@ public class AddProduct extends Modules { // system function, adds a Product to 
             price = p.nextDouble(); // take price from user
         }
         catch(Exception e){ // if input is not a double
-            System.out.println("====| WRONG INPUT: Try Again!");
+            System.out.println("====| WRONG INPUT: ");
             userOptions();
             return;
         }
@@ -61,7 +64,7 @@ public class AddProduct extends Modules { // system function, adds a Product to 
             stock = s.nextInt(); // take stock from user
         }
         catch(Exception e){ // if input is not an int
-            System.out.println("====| WRONG INPUT: Try Again!");
+            System.out.println("====| WRONG INPUT: ");
             userOptions();
             return;
         }
@@ -72,13 +75,10 @@ public class AddProduct extends Modules { // system function, adds a Product to 
             active = a.nextBoolean(); // take active from user
         }
         catch(Exception e){ // if input is not a boolean
-            System.out.println("====| WRONG INPUT: Try Again!");
+            System.out.println("====| WRONG INPUT: ");
             userOptions();
             return;
         }
-
-        System.out.println(">>>> Enter ID: "); // take id from user
-        String id = i.nextLine();
 
         Product prod = new Product(id); // set variables for the product
         prod.setName(name);
@@ -91,7 +91,7 @@ public class AddProduct extends Modules { // system function, adds a Product to 
         boolean add = inventory.addProductSec(prod); // add the product
 
         if(add == false){ // if addProductSec can't add a product
-            System.out.println("====| Product " + name + " was not entered successfully");
+            System.out.println("====| ERROR: Product " + name + " already exist");
         }
         else{ // product was added successfully
             System.out.println("====| Product " + name + " was entered successfully");
