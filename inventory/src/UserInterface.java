@@ -39,7 +39,7 @@ public class UserInterface { // class drives the system
 
                 newProd.setStock(Integer.parseInt(temp[5]));
 
-                inventory.addProduct(newProd);
+                inventory.addProductSec(newProd);
             }
             else {
             }
