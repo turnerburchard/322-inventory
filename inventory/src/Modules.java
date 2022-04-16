@@ -9,8 +9,4 @@ public abstract class Modules {
     }
 
     public abstract void moduleDriver() throws IOException;
-
-    public abstract void userOptions() throws IOException ;
-
-    public abstract void userInput() throws IOException;
 }
