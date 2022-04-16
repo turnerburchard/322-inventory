@@ -1,9 +1,11 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-public class AddProduct extends Modules {
+// Written by: Josh
+// Reviewed by: Brady
+public class AddProduct extends Modules { // system function, adds a Product to inventory
 
-    public void moduleDriver() throws IOException {
+    public void moduleDriver() throws IOException { // drives module function
         userInput();
         try {
             returnToMain();
@@ -13,7 +15,7 @@ public class AddProduct extends Modules {
 
     }
 
-    public void userOptions() throws IOException {
+    public void userOptions() throws IOException { // displays module's main menu
         System.out.println("1 -> Add Product " + "\n2 -> Exit to Main Menu"); // Menu
         Scanner str = new Scanner(System.in); // creates scanner object
         String inputString = str.nextLine(); // takes whatever user enters, so as not to create error
@@ -26,7 +28,7 @@ public class AddProduct extends Modules {
 
     }
 
-    public void userInput() throws IOException {
+    public void userInput() throws IOException { // handles module's main menu input
         Scanner n = new Scanner(System.in);
         Scanner p = new Scanner(System.in);
         Scanner d = new Scanner(System.in);
