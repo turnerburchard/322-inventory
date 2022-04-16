@@ -63,9 +63,9 @@ public class UserInterface { // class drives the system
     }
 
     public void menuMain() throws IOException { // acts as a central hub for the system interface, directs to system functions
-        System.out.println("====| Menu " + // displays main menu options to user
+        System.out.println("====| Main Menu " + // displays main menu options to user
                 "\n1 -> Add a Product" +
-                "\n2 -> Search by ID" +
+                "\n2 -> Search" +
                 "\n3 -> Edit a Product" +
                 "\n4 -> Display Inventory" +
                 "\n0 -> SAVE & EXIT");
