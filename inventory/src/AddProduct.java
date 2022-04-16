@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class AddProduct extends Modules {
@@ -5,7 +6,12 @@ public class AddProduct extends Modules {
     public void moduleDriver() {
         userOptions();
         userInput();
-        returnToMain();
+        try {
+            returnToMain();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void userOptions() {
@@ -31,7 +37,4 @@ public class AddProduct extends Modules {
 
     }
 
-    public void returnToMain() {
-        
-    }
 }
