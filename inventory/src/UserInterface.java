@@ -1,8 +1,8 @@
 import java.io.*;
 import java.util.Scanner;
 
-// Written by:
-// Reviewed by:
+// Written by: Jeremy
+// Reviewed by: Ezra
 
 // GENERIC INVENTORY PROGRAM: by unique ID/serial #/SKU/etc.
 // Created by: Brady Ash, Ezra Skoog, Jeremy Heng, Josh Fried, Turner Burchard

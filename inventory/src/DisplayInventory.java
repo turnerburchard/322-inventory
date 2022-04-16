@@ -1,8 +1,8 @@
 import java.io.IOException;
 import java.util.ArrayList;
 
-// Written by:
-// Reviewed by:
+// Written by: Jeremy
+// Reviewed by: Josh
 
 public class DisplayInventory extends Modules { // system function, displays all Products (w/ data) in inventory
 

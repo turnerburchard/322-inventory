@@ -1,7 +1,7 @@
 import java.io.IOException;
 
-// Written by:
-// Reviewed by:
+// Written by: Ezra
+// Reviewed by: Jeremy
 
 public abstract class Modules { // abstract class for system function modules
     // clear OCP area of the system, can always add new module to add new system functions

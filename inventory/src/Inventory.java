@@ -1,8 +1,8 @@
 import java.io.*;
 import java.util.ArrayList;
 
-// Written by:
-// Reviewed by:
+// Written by: Josh
+// Reviewed by: Turner
 
 public class Inventory { // class that manages ArrayList of Products (i.e. the inventory)
 

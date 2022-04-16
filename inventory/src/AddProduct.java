@@ -1,6 +1,9 @@
 import java.io.IOException;
 import java.util.Scanner;
 
+// Written by: Josh
+// Reviewed by: Brady
+
 public class AddProduct extends Modules {
 
     public void moduleDriver() throws IOException {
