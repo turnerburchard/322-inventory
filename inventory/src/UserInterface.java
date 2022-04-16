@@ -63,7 +63,7 @@ public class UserInterface { // class drives the system
     }
 
     public void menuMain() throws IOException { // acts as a central hub for the system interface, directs to system functions
-        System.out.println("====| Menu |====" + // displays main menu options to user
+        System.out.println("====| Menu " + // displays main menu options to user
                 "\n1 -> Add a Product" +
                 "\n2 -> Search by ID" +
                 "\n3 -> Edit a Product" +
@@ -72,13 +72,13 @@ public class UserInterface { // class drives the system
 
         Scanner str = new Scanner(System.in); // creates scanner object
 
-        System.out.println(">>>>| Enter Menu #: "); // visual flag for user input
+        System.out.println(">>>> Enter Menu #: "); // visual flag for user input
 
         String inputString = str.nextLine(); // takes whatever user enters, so as not to create error
         // input errors caught at end of if/else
 
         if (inputString.equals("0")) { // SAVE & EXIT
-            System.out.println("====| Saving... |====");
+            System.out.println("====| Saving...");
 
 //            File persistData = new File("invData.csv");
 //
@@ -96,7 +96,7 @@ public class UserInterface { // class drives the system
 
             // need code to write all inv products to invData.csv
 
-            System.out.println("====| Closing... |====");
+            System.out.println("====| Closing...");
             System.exit(0);
 
         } else if (inputString.equals("1")) { // add a product
@@ -121,7 +121,7 @@ public class UserInterface { // class drives the system
             menuMain();
         }
         else {
-            System.out.println("==== Input Not Understood -> Try Again ===="); // user input error-catcher
+            System.out.println("====| Input Not Understood -> Try Again"); // user input error-catcher
 
             menuMain(); // loops menuMain()
         }
