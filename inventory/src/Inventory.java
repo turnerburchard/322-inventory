@@ -38,8 +38,7 @@ public class Inventory { // class that manages ArrayList of Products (i.e. the i
     }
 
     public boolean addProductSec(Product prod) { // for protecting data-accessing methods
-        addProduct(prod);
-        return true;
+        return addProduct(prod);
     }
 
     private boolean addProduct(Product prod) { // adds given product to inventory ArrayList
@@ -53,8 +52,7 @@ public class Inventory { // class that manages ArrayList of Products (i.e. the i
     }
 
     public boolean modProductSec(Product prod) {  // for protecting data-accessing methods
-        modProduct(prod);
-        return true;
+        return modProduct(prod);
     }
 
     private boolean modProduct(Product prod) { // modifies Product

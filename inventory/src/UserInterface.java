@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class UserInterface { // class drives the system
     // passes 'control' of system function to system modules that encapsulate respective system functions
 
-    private Inventory inventory = Inventory.getInstance(); // creates/grabs inventory instance when class is init.
+    private final Inventory inventory = Inventory.getInstance(); // creates/grabs inventory instance when class is init.
 
     public Modules currentModule = null; // var for interacting with interface methods of module classes
 
@@ -38,6 +38,8 @@ public class UserInterface { // class drives the system
                 }
 
                 newProd.setStock(Integer.parseInt(temp[5]));
+
+                inventory.addProductSec(newProd);
             }
             else {
             }
