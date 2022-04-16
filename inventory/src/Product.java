@@ -1,7 +1,7 @@
 import java.util.UUID;
 
-// Written by:
-// Reviewed by:
+// Written by: Brady
+// Reviewed by: Josh
 
 public class Product { // data class for holding information concerning a single Product
     // all products in the inventory must have a unique ID, logically equivalent to a SKU/product #/UPC/serial #
