@@ -8,9 +8,9 @@ public abstract class Modules {
         mainInterface.menuMain();
     }
 
-    public abstract void moduleDriver();
+    public abstract void moduleDriver() throws IOException;
 
-    public abstract void userOptions();
+    public abstract void userOptions() throws IOException ;
 
-    public abstract void userInput();
+    public abstract void userInput() throws IOException;
 }

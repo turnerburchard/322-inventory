@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class AddProduct extends Modules {
 
-    public void moduleDriver() {
+    public void moduleDriver() throws IOException {
         userOptions();
         userInput();
         try {
@@ -19,7 +19,7 @@ public class AddProduct extends Modules {
                 "Name, Price, Description, Stock,and Active Status(True or False)");
     }
 
-    public void userInput() {
+    public void userInput() throws IOException {
 
         String[] productInfo;
         Scanner input = new Scanner(System.in);

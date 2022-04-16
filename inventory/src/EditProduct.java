@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class EditProduct extends Modules {
 
-    public void moduleDriver() {
+    public void moduleDriver() throws IOException {
         userOptions();
         userInput();
         try {
@@ -18,7 +18,7 @@ public class EditProduct extends Modules {
         System.out.println("Enter the name of a product to modify: ");
     }
 
-    public void userInput() {
+    public void userInput() throws IOException {
         Scanner name = new Scanner(System.in);
         String userInput = name.nextLine();
         ArrayList<Product> inv;
