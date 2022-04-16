@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Search extends Modules {
 
-    public void moduleDriver() {
+    public void moduleDriver() throws IOException {
         userOptions();
         userInput();
         try {
@@ -19,7 +19,7 @@ public class Search extends Modules {
         System.out.println("Enter the first few character of a product's name to get a list of matching products.");
     }
 
-    public void userInput() {
+    public void userInput() throws IOException {
         Scanner str = new Scanner(System.in);
         String userInput = str.nextLine();
         userInput = userInput.toLowerCase();

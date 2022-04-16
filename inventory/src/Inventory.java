@@ -1,5 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
@@ -9,8 +8,46 @@ public class Inventory { // class that manages ArrayList of Products (i.e. the i
     private static Inventory inventoryInstance = null;
     private static ArrayList<Product> inventory; // the aforementioned inventory
 
-    private Inventory() { // called by getInstance(), Singleton pattern
+    private Inventory() throws IOException { // called by getInstance(), Singleton pattern
         inventory = new ArrayList<>();
+
+        File file = new File("invData.csv");
+
+        FileReader reader = new FileReader(file); // creates files readers
+        BufferedReader buffReader = new BufferedReader(reader);
+
+        String line = ""; // needed for reading in csv
+        String [] temp; // needed for reading in csv
+
+        int productCounter = -1;
+
+        while((line = buffReader.readLine()) != null) {
+            temp = line.split(",");
+
+            if (productCounter >= 0) {
+                Product newProd = new Product(temp[0]);
+
+                newProd.setName(temp[1]);
+                newProd.setPrice(Double.parseDouble(temp[2]));
+                newProd.setDescription(temp[3]);
+                if (temp[4] == "t") {
+                    newProd.setActive(true);
+                }
+                else {
+                    newProd.setActive(false);
+                }
+
+                newProd.setStock(Integer.parseInt(temp[5]));
+
+                addProductSec(newProd);
+            }
+            else {
+            }
+
+            productCounter++;
+        }
+
+        System.out.println("====| " + productCounter + " products loaded into inventory |====");
     }
 
     //for csv input
@@ -30,7 +67,7 @@ public class Inventory { // class that manages ArrayList of Products (i.e. the i
         scan.close();
     }
 
-    public static Inventory getInstance() { // for Singleton pattern, calls private constructor
+    public static Inventory getInstance() throws IOException { // for Singleton pattern, calls private constructor
         if (inventoryInstance == null) {
             inventoryInstance = new Inventory();
         }

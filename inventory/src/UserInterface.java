@@ -11,48 +11,48 @@ public class UserInterface { // class drives the system
 
     public UserInterface() throws IOException { // loads .csv upon creation, essentially loading persistent data on start
         // calls menuMain() to act as class driver
-        File file = new File("invData.csv");
-
-        FileReader reader = new FileReader(file); // creates files readers
-        BufferedReader buffReader = new BufferedReader(reader);
-
-        String line = ""; // needed for reading in csv
-        String [] temp; // needed for reading in csv
-
-        int productCounter = -1;
-
-        while((line = buffReader.readLine()) != null) {
-            temp = line.split(",");
-
-            if (productCounter >= 0) {
-                Product newProd = new Product(temp[0]);
-
-                newProd.setName(temp[1]);
-                newProd.setPrice(Double.parseDouble(temp[2]));
-                newProd.setDescription(temp[3]);
-                if (temp[4] == "t") {
-                    newProd.setActive(true);
-                }
-                else {
-                    newProd.setActive(false);
-                }
-
-                newProd.setStock(Integer.parseInt(temp[5]));
-
-                inventory.addProductSec(newProd);
-            }
-            else {
-            }
-
-            productCounter++;
-        }
-
-        System.out.println("====| " + productCounter + " products loaded into inventory |====");
+//        File file = new File("invData.csv");
+//
+//        FileReader reader = new FileReader(file); // creates files readers
+//        BufferedReader buffReader = new BufferedReader(reader);
+//
+//        String line = ""; // needed for reading in csv
+//        String [] temp; // needed for reading in csv
+//
+//        int productCounter = -1;
+//
+//        while((line = buffReader.readLine()) != null) {
+//            temp = line.split(",");
+//
+//            if (productCounter >= 0) {
+//                Product newProd = new Product(temp[0]);
+//
+//                newProd.setName(temp[1]);
+//                newProd.setPrice(Double.parseDouble(temp[2]));
+//                newProd.setDescription(temp[3]);
+//                if (temp[4] == "t") {
+//                    newProd.setActive(true);
+//                }
+//                else {
+//                    newProd.setActive(false);
+//                }
+//
+//                newProd.setStock(Integer.parseInt(temp[5]));
+//
+//                inventory.addProductSec(newProd);
+//            }
+//            else {
+//            }
+//
+//            productCounter++;
+//        }
+//
+//        System.out.println("====| " + productCounter + " products loaded into inventory |====");
 
         menuMain();
     }
 
-    public void runCurrentModule() { // for running the module, used by menuMain()
+    public void runCurrentModule() throws IOException { // for running the module, used by menuMain()
         currentModule.moduleDriver(); // calls current module's driver to start that respective function
     }
 
