@@ -9,7 +9,8 @@ public class EditProduct extends Modules { // system function, edits an already 
 
     public void moduleDriver() throws IOException { // drives module function
         userInput();
-        try {
+
+        try { // the java IDE gods said put this in so...
             returnToMain();
         } catch (IOException e) {
             e.printStackTrace();
@@ -33,6 +34,7 @@ public class EditProduct extends Modules { // system function, edits an already 
         ArrayList<Product> inv;
         String matchFound = "null";
 
+        // gets copy of current inventory
         Inventory inventory = Inventory.getInstance();
         inv = inventory.returnInventorySec();
 
@@ -44,6 +46,7 @@ public class EditProduct extends Modules { // system function, edits an already 
                 matchFound = "Found";
             }
         }
+
         if(matchFound.equals("Found")){
             Scanner n = new Scanner(System.in);
             Scanner p = new Scanner(System.in);
@@ -67,7 +70,6 @@ public class EditProduct extends Modules { // system function, edits an already 
 
             System.out.println(">>>> Enter Description: ");
             String description = d.nextLine(); // take description from user
-
 
             System.out.println(">>>> Enter Stock: ");
             int stock = 0;
@@ -100,12 +102,11 @@ public class EditProduct extends Modules { // system function, edits an already 
 
             inventory.modProductSec(prod); // add the product
             System.out.println("====| Product " + name + " was modified successfully");
-
         }
+
         else{ // user's input id was not in the inventory
             System.out.println("====| ERROR: Product ID: " + id + " doesn't exist");
             userOptions();
         }
     }
-
 }

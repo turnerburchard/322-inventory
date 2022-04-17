@@ -13,15 +13,6 @@ public class Product { // data class for holding information concerning a single
     private int stock;
     private String id;
 
-    Product() { // for creating a Product with a random ID, ID cannot be changed after creation
-        name = "No Name Set";
-        price = 0.00;
-        description = "No Description Set";
-        active = false;
-        stock = 0;
-        this.id = UUID.randomUUID().toString().substring(0,8);
-    }
-
     Product(String inputID) { // for creating a Product with a specific ID, ID cannot be changed after creation
         this.id = inputID;
         name = "No Name Set";

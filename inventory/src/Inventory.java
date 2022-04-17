@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Inventory { // class that manages ArrayList of Products (i.e. the inventory)
 
-    private static Inventory inventoryInstance = null;
+    private static Inventory inventoryInstance = null; // gets only-existing instance of Inventory
     private static ArrayList<Product> inventory; // the aforementioned inventory
 
     private Inventory() throws IOException { // called by getInstance(), Singleton pattern
@@ -28,6 +28,8 @@ public class Inventory { // class that manages ArrayList of Products (i.e. the i
             temp = line.split(",");
 
             if (productCounter >= 0) { // handles first line headers
+
+                // loads data from .csv into a Product
                 Product newProd = new Product(temp[0]);
 
                 newProd.setName(temp[1]);
@@ -43,9 +45,7 @@ public class Inventory { // class that manages ArrayList of Products (i.e. the i
 
                 newProd.setStock(Integer.parseInt(temp[5]));
 
-                addProductSec(newProd); // adds Product read from .csv to inventory
-            }
-            else {
+                addProductSec(newProd); // adds Product to inventory
             }
 
             productCounter++; // keeps track of the # of Products being loaded
@@ -105,5 +105,16 @@ public class Inventory { // class that manages ArrayList of Products (i.e. the i
         // passes by value, not by ref, ensures modules don't accidentally edit Product data
 
         return inventory;
+    }
+
+    // last two methods were not actually used for this sprint but were important for OCP principle
+    // a future module may need to remove a Product from inventory
+    public boolean removeProductSec(String id) { // for security, calls actual method
+        return removeProduct(id);
+    }
+
+    private boolean removeProduct(String id) { // removes a Product from inventory, given an ID
+
+        return true;
     }
 }

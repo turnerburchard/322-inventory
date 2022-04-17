@@ -10,7 +10,7 @@ public class Search extends Modules { // system function, allows user to display
     public void moduleDriver() throws IOException { // drives module
         moduleMenu();
 
-        try {
+        try { // the java IDE gods said put this in so...
             returnToMain();
         } catch (IOException e) {
             e.printStackTrace();
@@ -181,26 +181,3 @@ public class Search extends Modules { // system function, allows user to display
         }
     }
 }
-
-// System.out.println("Enter the first few character of a product's name to get a list of matching products.");
-//    Scanner str = new Scanner(System.in);
-//    String userInput = str.nextLine();
-//        userInput = userInput.toLowerCase();
-//
-//                Inventory tempInventory = Inventory.getInstance();
-//                ArrayList<Product> inventory = tempInventory.returnInventorySec();
-//
-//        ArrayList<Product> matchesFound = new ArrayList<>();
-//        for(Product eachProduct : inventory) {  //  Check each item in the inventory to see if it contains matching letters with user input
-//        String tempProduct = eachProduct.getName();
-//        tempProduct = tempProduct.toLowerCase();
-//        if(tempProduct.contains(userInput)) {
-//        matchesFound.add(eachProduct);
-//        }
-//        }
-//
-//        //  Loops through and prints each product that was found from the searchInventory method
-//        System.out.println("Size:" + matchesFound.size());
-//        for (int i = 0; i < matchesFound.size(); i++) {
-//        System.out.println(i + ":" + matchesFound.get(i).getName() + ", $" + matchesFound.get(i).getPrice() + ", #" + matchesFound.get(i).getId());
-//        }
