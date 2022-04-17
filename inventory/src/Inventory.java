@@ -52,6 +52,8 @@ public class Inventory { // class that manages ArrayList of Products (i.e. the i
         }
 
         System.out.println("====| " + productCounter + " products loaded into inventory");
+        reader.close();
+        buffReader.close();
     }
 
     public static Inventory getInstance() throws IOException { // for Singleton pattern, calls private constructor
