@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 // Written by: Turner
@@ -23,8 +22,7 @@ public class Search extends Modules { // system function, allows user to display
         System.out.println("1 -> ID " +
                 "\n2 -> Name" +
                 "\n3 -> Description" +
-                "\n4 -> Stock" +
-                "\n5 -> Status" +
+                "\n4 -> Status (y or n)" +
                 "\n0 -> Exit to Main Menu");
 
         System.out.println(">>>> Enter Menu #: ");
@@ -33,6 +31,15 @@ public class Search extends Modules { // system function, allows user to display
 
         if (userChoice.equals("0")) { // brings user straight to main menu
             returnToMain();
+        }
+        else if (Integer.parseInt(userChoice) > 4) { // user input error-catcher
+            System.out.println("====| Input Not Understood -> Try Again");
+
+            moduleMenu();
+        } else if (Integer.parseInt(userChoice) < 0) { // user input error-catcher
+            System.out.println("====| Input Not Understood -> Try Again");
+
+            moduleMenu();
         }
 
         System.out.println(">>>> Enter Search Parameter: ");
@@ -49,8 +56,8 @@ public class Search extends Modules { // system function, allows user to display
         ArrayList<Product> searchResults = new ArrayList<>(); // for storing results of a search
         String searchType = null; // for the type of search that was conducted, used for calling displaySearchResults()
 
-        switch (userChoice) {
-            case "1" -> {
+        switch (userChoice) { // for appropriate handling of userChoice
+            case "1" -> { // search by ID
                 searchType = "ID";
 
                 for (Product eachProduct : inventory) {  //  Check each Product ID in the inventory to see if it contains matching substring
@@ -64,27 +71,75 @@ public class Search extends Modules { // system function, allows user to display
                 }
             }
 
-            case "2" ->  {
+            case "2" ->  { // search by name
                 searchType = "Name";
+
+                for (Product eachProduct : inventory) {  //  Check each Product ID in the inventory to see if it contains matching substring
+                    String tempProduct = eachProduct.getName();
+
+                    tempProduct = tempProduct.toLowerCase();
+
+                    if (tempProduct.contains(searchParam)) {
+                        searchResults.add(eachProduct);
+                    }
+                }
             }
-            case "3" -> searchType = "Description";
-            case "4" -> searchType = "Stock";
-            case "5" -> searchType = "Status";
-            default -> {
+
+            case "3" ->  { // search by description
+                searchType = "Description";
+
+                for (Product eachProduct : inventory) {  //  Check each Product ID in the inventory to see if it contains matching substring
+                    String tempProduct = eachProduct.getDescription();
+
+                    tempProduct = tempProduct.toLowerCase();
+
+                    if (tempProduct.contains(searchParam)) {
+                        searchResults.add(eachProduct);
+                    }
+                }
+            }
+
+            case "4" -> { // search by status
+                // user input for searchParam has to be "y" or "n"
+
+                searchType = "Status";
+
+                for (Product eachProduct : inventory) {  //  Check each Product ID in the inventory to see if it contains matching substring
+                    boolean tempProduct = eachProduct.getActive();
+
+                    if (searchParam.equals("y")) { // if Product is active
+                        if (tempProduct) {
+                            searchResults.add(eachProduct);
+                        }
+                    } else if (searchParam.equals("n")) { // if Product is inactive
+                        if (!tempProduct) {
+                            searchResults.add(eachProduct);
+                        }
+                    }
+                    else { // user input error-catcher
+                        System.out.println("====| Input Not Understood -> Try Again");
+                        moduleMenu();
+                    }
+                }
+            }
+
+            default -> { // user input error-catcher
                 System.out.println("====| Input Not Understood -> Try Again"); // user input error-catcher
                 moduleMenu();
             }
         }
 
-        displaySearchResults(searchResults, searchType);
+        displaySearchResults(searchResults, searchType); // displays results of the search type chosen by user
 
         moduleMenu();
     }
 
-    private void displaySearchResults(ArrayList<Product> results, String searchType) throws IOException {
-        int lineCounter = 1;
+    private void displaySearchResults(ArrayList<Product> results, String searchType) throws IOException { // displays results of various search functions
+        // takes an ArrayList<Product> and searchType, for display/printing purposes
 
-        if (results.isEmpty()) {
+        int lineCounter = 1; // keeps track of the line number of a Product being printed
+
+        if (results.isEmpty()) { // if there are no results from a search, returns to module menu
             System.out.println("====| No results to display ");
 
             moduleMenu();
