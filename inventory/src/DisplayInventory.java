@@ -13,7 +13,7 @@ public class DisplayInventory extends Modules { // system function, displays all
         System.out.println("====| Current Inventory: ");
         System.out.printf("%-8s %-15s %-30s %-30s %8s %8s %-15s\n", "Line", "ID", "Product Name", "Product Description", "Price", "Stock", "Status");
 
-        int lineCounter = 1;
+        int lineCounter = 1; // for keeping track of the line number when printing
 
         //runs through the inventory and prints out product information
         for (Product p : inventory) {
@@ -21,7 +21,7 @@ public class DisplayInventory extends Modules { // system function, displays all
             String tempDesc;
             String tempActive;
             String tempStock;
-            //If name/desc is longer than 30 chars, will cut them off at 27 and add 3 dots.
+            //If name/desc is longer than 30 chars, will cut them off at 27 and add 3 dots
             if (p.getName().length() > 30) {
                 tempName = p.getName().substring(0, 26);
                 tempName = tempName + "...";
@@ -40,13 +40,13 @@ public class DisplayInventory extends Modules { // system function, displays all
                 tempActive = "Inactive";
             }
             tempStock = Integer.toString(p.getStock());
-            //Print out inventory list.
 
+            //Prints inventory list
             System.out.printf("%-8s %-15s %-30s %-30s %8s %8s %-15s  \n", lineCounter, p.getId(), tempName, tempDesc, p.getPrice(), tempStock, tempActive);
 
-            lineCounter++;
+            lineCounter++; // for increasing line number
         }
 
-        returnToMain(); // exits module and returns to main, no interaction in this module
+        returnToMain(); // exits module and returns to main, no user interaction w/ this module
     }
 }

@@ -4,7 +4,7 @@ import java.io.IOException;
 // Reviewed by: Jeremy
 
 public abstract class Modules { // abstract class for system function modules
-    // clear OCP area of the system, can always add new module to add new system functions
+    // main OCP area of the system, can always add new module to add new system functions
 
     public void returnToMain() throws IOException { // returns system to main menu when in a module
         UserInterface mainInterface = new UserInterface();
