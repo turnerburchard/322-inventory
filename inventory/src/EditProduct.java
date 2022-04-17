@@ -80,7 +80,7 @@ public class EditProduct extends Modules { // system function, edits an already 
                 return;
             }
 
-            System.out.println(">>>> Enter Active (True or False): ");
+            System.out.println(">>>> Enter Status (true or false): ");
             boolean active = false;
             try{
                 active = a.nextBoolean(); // take active from user

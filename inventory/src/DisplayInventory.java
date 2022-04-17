@@ -11,7 +11,7 @@ public class DisplayInventory extends Modules { // system function, displays all
         ArrayList<Product> inventory = Inventory.getInstance().returnInventorySec(); // gets copy of inventory ArrayList
 
         System.out.println("====| Current Inventory: ");
-        System.out.printf("%-8s %-15s %-30s %-30s %8s %8s %-15s\n", "Line", "ID", "Product Name", "Product Description", "Price", "Stock", "Active Product?");
+        System.out.printf("%-8s %-15s %-30s %-30s %8s %8s %-15s\n", "Line", "ID", "Product Name", "Product Description", "Price", "Stock", "Status");
 
         int lineCounter = 1;
 
@@ -37,7 +37,7 @@ public class DisplayInventory extends Modules { // system function, displays all
             if (p.getActive()) {
                 tempActive = "Active";
             } else {
-                tempActive = "Not Active";
+                tempActive = "Inactive";
             }
             tempStock = Integer.toString(p.getStock());
             //Print out inventory list.

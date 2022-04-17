@@ -25,7 +25,6 @@ public class AddProduct extends Modules { // system function, adds a Product to 
         else{ // exit to main
             returnToMain();
         }
-
     }
 
 
@@ -69,7 +68,7 @@ public class AddProduct extends Modules { // system function, adds a Product to 
             return;
         }
 
-        System.out.println(">>>> Enter Active (True or False): ");
+        System.out.println(">>>> Enter Status (true or false): ");
         boolean active = false;
         try{
             active = a.nextBoolean(); // take active from user
