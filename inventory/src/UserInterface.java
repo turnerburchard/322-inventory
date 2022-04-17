@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 // Written by: Jeremy
@@ -53,21 +54,48 @@ public class UserInterface { // class drives the system, handles user input, and
         if (inputString.equals("0")) { // SAVE & EXIT
             System.out.println("====| Saving...");
 
-//            File persistData = new File("invData.csv");
-//
-//            if (persistData.delete()) { // deletes old invData.csv
-//            }
-//            else {
-//                System.out.println("====| NO CHANGES SAVED: issues saving data |====");
-//            }
-//
-//            if (persistData.createNewFile()) { // creates new, blank invData.csv
-//            }
-//            else {
-//                System.out.println("====| NO CHANGES SAVED: issues saving data |====");
-//            }
+            File persistData = new File("invData.csv");
 
-            // need code to write all inv products to newly created invData.csv, because old invData.csv was deleted
+            if (persistData.delete()) { // deletes old invData.csv
+            }
+            else {
+                System.out.println("====| NO CHANGES SAVED: issues saving data |====1");
+            }
+
+            if (persistData.createNewFile()) { // creates new, blank invData.csv
+                //sets up the writer, and writes the header to the file
+                PrintWriter writer = new PrintWriter(persistData);
+                ArrayList<Product> inventory = Inventory.getInstance().returnInventorySec();
+                writer.append("id,name,price,description,active,stock\n");
+
+                for (Product eachProduct : inventory) {  // prints each piece of product info into the file, adding commas in between.
+                    writer.append(eachProduct.getId());
+                    writer.append(",");
+                    writer.append(eachProduct.getName());
+                    writer.append(",");
+                    writer.append(Double.toString(eachProduct.getPrice()));
+                    writer.append(",");
+                    writer.append(eachProduct.getDescription());
+                    writer.append(",");
+                    if(eachProduct.getActive()) {
+                        writer.append("t");
+                    }
+                    else {
+                        writer.append("f");
+                    }
+                    writer.append(",");
+                    writer.append(Integer.toString(eachProduct.getStock()));
+                    writer.append("\n");
+
+                }
+                writer.flush();
+                writer.close();
+            }
+            else {
+                System.out.println("====| NO CHANGES SAVED: issues saving data |====");
+            }
+
+             //need code to write all inv products to newly created invData.csv, because old invData.csv was deleted
 
             System.out.println("====| Closing...");
             System.exit(0);
