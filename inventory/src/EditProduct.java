@@ -24,8 +24,12 @@ public class EditProduct extends Modules { // system function, edits an already 
         if(inputString.equals("1")){ // Edit product
             userInput();
         }
-        else{ // Exit to main
+        else if(inputString.equals("2")){ // exit to main
             returnToMain();
+        }
+        else{ // menu
+            System.out.println("====| Input Not Understood -> Try Again");
+            userOptions();
         }
     }
 

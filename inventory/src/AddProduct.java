@@ -24,8 +24,12 @@ public class AddProduct extends Modules { // system function, adds a Product to 
         if(inputString.equals("1")){ // Add product
             userInput();
         }
-        else{ // exit to main
+        else if(inputString.equals("2")){ // exit to main
             returnToMain();
+        }
+        else{ // menu
+            System.out.println("====| Input Not Understood -> Try Again");
+            userOptions();
         }
     }
 
