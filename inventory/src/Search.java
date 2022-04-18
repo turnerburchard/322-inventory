@@ -32,11 +32,8 @@ public class Search extends Modules { // system function, allows user to display
         if (userChoice.equals("0")) { // brings user straight to main menu
             returnToMain();
         }
-        else if (Integer.parseInt(userChoice) > 4) { // user input error-catcher
-            System.out.println("====| Input Not Understood -> Try Again");
-
-            moduleMenu();
-        } else if (Integer.parseInt(userChoice) < 0) { // user input error-catcher
+        else if(!userChoice.equals("1") && !userChoice.equals("2") && !userChoice.equals("3") && !userChoice.equals("4")){
+            // user input error-catcher
             System.out.println("====| Input Not Understood -> Try Again");
 
             moduleMenu();
